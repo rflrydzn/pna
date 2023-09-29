@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Switcher</title>
+</head>
+<body>
+
+<!-- Add the notranslate class to elements you don't want to be translated -->
+<div id="google_translate_element" class="notranslate">
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      function googleTranslateElementInit(){
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,tl', // Specify the languages you want to include (English and Tagalog)
+          },
+          'google_translate_element'
+        );
+      }
+    </script>
+</div>
+
+<!-- The navbar below won't be translated -->
+<nav class="navbar notranslate">
+    <!-- Your navbar content here -->
+</nav>
+
+<!-- Container for the article to be translated -->
+<div id="article-container">
+  <p>This is the original content in English.</p>
+  <p>More content...</p>
+</div>
+
+</body>
+</html>
