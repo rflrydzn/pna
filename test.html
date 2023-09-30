@@ -3,58 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility Instruction Page</title>
+    <title>Open Iframe</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
+        /* Add some basic styling for the iframe container */
+        #iframeContainer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 300px; /* Set the maximum width for the iframe box */
+            width: 100%;
         }
 
-        h1, h2 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        a {
-            color: #007BFF;
+        /* Add overlay to close the iframe when clicked outside */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Accessibility Instructions</h1>
-    </header>
+<!-- Link to open the iframe -->
+<a href="#" id="openIframeLink">financial intermediation</a>
 
-    
+<!-- The iframe container initially hidden -->
+<div id="overlay"></div>
+<div id="iframeContainer" style="display:none;">
+    <!-- The iframe with some text -->
+    <iframe id="myIframe" width="100%" height="100%" srcdoc="<p>A financial intermediary is an institution or individual that serves as a middleman among diverse parties in order to facilitate financial transactions. Common types include commercial banks, investment banks, stockbrokers, pooled investment funds, and stock exchanges.</p>"></iframe>
+</div>
 
-    <section>
-        <h2>Accessibility Features</h2>
-        <p>We are committed to making our website accessible to everyone. Here are some features:</p>
-        <ul>
-            <li>Text alternatives for non-text content.</li>
-            <li>Captions and alternatives for multimedia.</li>
-            <li>Readable and accessible fonts and colors.</li>
-            <li>Use TAB key to navigate links and buttons.</li>
-            <li>Use ENTER key to open a link.</li>
-            <li>Use SKIP TO CONTENT to go to your desired section.</li>
-            <!-- Add more accessibility features as needed -->
-        </ul>
-    </section>
+<script>
+    // Function to open the iframe
+    function openIframe() {
+        document.getElementById('iframeContainer').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
 
-    <section>
-        <h2>Reporting Accessibility Problems</h2>
-        <p>If you encounter any accessibility issues or have suggestions for improvement, please <a href="mailto:accessibility@example.com">email us</a>.</p>
-        <!-- Replace "accessibility@example.com" with your actual email address -->
-    </section>
+    // Function to close the iframe
+    function closeIframe() {
+        document.getElementById('iframeContainer').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
 
-    <footer>
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
-    </footer>
+    // Attach the openIframe function to the link click event
+    document.getElementById('openIframeLink').addEventListener('click', openIframe);
+
+    // Attach the closeIframe function to the overlay click event
+    document.getElementById('overlay').addEventListener('click', closeIframe);
+</script>
 
 </body>
 </html>

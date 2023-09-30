@@ -4,6 +4,32 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <style>
+            /* Add some basic styling for the iframe container */
+            #iframeContainer {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ccc;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                max-width: 300px; /* Set the maximum width for the iframe box */
+                width: 100%;
+            }
+    
+            /* Add overlay to close the iframe when clicked outside */
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+            }
+        </style>
     </head>
 
     <body>
@@ -111,8 +137,8 @@
                         <div class="latest-news">
                             
                             <div class="article-pic">
-                            <img src="images/news3.png">
-                            <p>Bangko Sentral ng Pilipinas (BSP) Governor Eli Remolona Jr.</p>
+                            <img src="images/news3.png" alt="Photo of Bangko Sentral ng Pilipinas Governor Eli Remolona Jr.">
+                            
                             </div>
                             
                             <div class="article-text">
@@ -123,8 +149,11 @@
                                 the current rate of 9.5 percent is relatively high compared to regional 
                                 standards. He explained that the high reserve requirement was a 
                                 traditional method to control money supply, but it now acts as a distortion 
-                                in financial intermediation, creating unnecessary gaps between lending and 
-                                deposit rates.
+                                in <a href="#" id="openIframeLink">financial intermediation.</a><div id="overlay"></div>
+                                <div id="iframeContainer" style="display:none;">
+                                    <!-- The iframe with some text -->
+                                    <iframe id="myIframe" width="100%" height="100%" srcdoc="<p>A financial intermediary is an institution or individual that serves as a middleman among diverse parties in order to facilitate financial transactions. Common types include commercial banks, investment banks, stockbrokers, pooled investment funds, and stock exchanges.</p>"></iframe>
+                                </div>
                                 <br><br>
                                 While ruling out a further RRR cut for this year, Remolona mentioned a slight 
                                 possibility of an off-cycle rate hike, depending on upcoming economic 
@@ -135,7 +164,7 @@
                                 percent in August. The governor emphasized the need to find the right 
                                 balance in monetary policies to ensure stability and economic growth. 
                                 The official September 2023 inflation data will be released by the 
-                                Philippine Statistics Authority next week.</p>
+                                <a href="https://en.wikipedia.org/wiki/Philippine_Statistics_Authority">Philippine Statistics Authority</a> next week.</p>
                             </div>    
                         </div> 
                   </div>      
@@ -213,5 +242,25 @@
 <script src="js/back-to-top.js"></script>
 <script src="js/translate.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    // Function to open the iframe
+    function openIframe(event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor link
+        document.getElementById('iframeContainer').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    // Function to close the iframe
+    function closeIframe() {
+        document.getElementById('iframeContainer').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Attach the openIframe function to the link click event
+    document.getElementById('openIframeLink').addEventListener('click', openIframe);
+
+    // Attach the closeIframe function to the overlay click event
+    document.getElementById('overlay').addEventListener('click', closeIframe);
+</script>
     </body>
 </html>
